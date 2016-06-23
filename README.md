@@ -29,7 +29,7 @@ In case of any trouble, [click here](https://www.linux.com/learn/easy-lamp-serve
 
 The details about the database and the tables used are as follows :
 + Create an user with all grant privileges, say "MyUsername" or you may use any existing user with all grant privileges.
-+ In case you created a new usr, set up a password, say "MyPassword"
++ In case you created a new user, set up a password, say "MyPassword"
 + Create a database after logging in with the above username and password, say "MyDatabase". You may use any existing database as well(Not recommended).
 + The first table is 'users'. The CREATE TABLE command is given below.  
    CREATE TABLE `users` (  
