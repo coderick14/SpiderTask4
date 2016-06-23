@@ -48,6 +48,7 @@
             font-family: calibri,sans-serif;
             color: darkslategray;
             text-align: center;
+            background-image: linear-gradient(to right,darkslategray,lightgray,white);
           }
           h1,h2,h3 {
             font-weight: 400;

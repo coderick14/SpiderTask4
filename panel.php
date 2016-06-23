@@ -22,6 +22,7 @@
             font-family: calibri,sans-serif;
             color: darkslategray;
             text-align: center;
+            background-image: linear-gradient(to right,darkslategray,lightgray,white);
           }
           th,td {
             padding: 0.5em;
@@ -34,15 +35,18 @@
           tr:nth-child(odd) {
             background-color: #FFE4C4;
           }
+          tr:nth-child(even)  {
+            background-color: #99FFD6;
+          }
           h1,h2,h3 {
             font-weight: 400;
           }
         </style>
       </head>
       <body>
-        <h1>Welcome to PostIt Admin Panel</h1>
-        <a href="board.php" style="text-decoration:none">Go to bulletin board</a><br/>
-        <a href="logout.php" style="text-decoration:none">Logout</a>
+        <h1>Welcome to PostIt Admin Panel, <?php echo $_SESSION['user']; ?>!</h1>
+        <a href="board.php" style="text-decoration:none;color:red">Go to bulletin board</a><br/>
+        <a href="logout.php" style="text-decoration:none;color:red">Logout</a>
         <br/>
         <form id='editForm' method="post" action="editLevel.php">
           <input type="hidden" name="editUser" />
