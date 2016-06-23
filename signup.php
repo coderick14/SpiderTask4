@@ -88,7 +88,7 @@
           </form>
         </div>
         <br/>
-        <h3 id="signchange" style="cursor:pointer">Already a registered user?? Click here to sign in.</h3>
+        <h3 id="signchange">Already a registered user? Click here to sign in.</h3>
       </center>
       <script type="text/javascript">
         document.getElementById('signchange').addEventListener("click",showSignIn);

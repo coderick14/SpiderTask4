@@ -66,7 +66,7 @@
           </form>
         </div>
         <br/>
-        <h3 id="signchange" style="cursor:pointer">Not a registered user?? Click here to sign up.</h3>
+        <h3 id="signchange">Not a registered user? Click here to sign up.</h3>
       </center>
       <script type="text/javascript">
         document.getElementById('signchange').addEventListener("click",showSignUp);
