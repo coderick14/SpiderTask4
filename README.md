@@ -69,12 +69,15 @@ The details about the database and the tables used are as follows :
 
 + The signup page uses Google reCaptcha to prevent bot users.
 + Go to [this link](https://www.google.com/recaptcha/intro/index.html). Click on **get reCaptcha** button in top right corner.
-+ Sign in through you Gmail account.(If you are already signed up, then ignore this step).
++ Sign in through your Gmail account.(If you are already signed up, then ignore this step).
 + In the **Register a new site** box, type in a label(say localhost) and your domain name(say localhost). 
 + Click on **Register**.
 + You will get two keys, a public key and a private key.
 + Copy the private key. Open signup.php. Assign this value to $privatekey variable.
-+ Copy the public key. Open signup.php. In the <form> tag, you will see a <div> with class 'g-recaptcha'. Paste this public key in the 'data-sitekey' attribute of this <div>.
++ Copy the public key. Open signup.php. You will see a line 
+```html
+<div class="g-recaptcha" data-sitekey="Your-public-key"></div>
+```. Paste this public key in the 'data-sitekey' attribute,replacing "Your-public-key".
 
 ----
 
