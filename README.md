@@ -4,7 +4,7 @@ This project involves making a bulletin board where users can login or signup to
 The access rights are as follows:  
 + **Visitor**:Can view posts
 + **Editor** :Can view and add posts
-+ **Admin**  :Can view,add and delete posts. Can view and change access levels of other registered users(excepting admins).
++ **Admin**  :Can view,add and delete posts. Can view and change access levels of other registered users(except admins). Can moderate the posts of any Editor. By moderation,we mean that the posts made by that particular Editor will not appear on the bulletin board directly. Instead, they will show up in the Admin Panel where the Admin can choose to allow or discard the post.
 
 ----
 
@@ -51,6 +51,15 @@ The details about the database and the tables used are as follows :
   PRIMARY KEY (`Id`),  
   KEY `post_by` (`post_by`)  
 )
++ The third table is 'mods'. The CREATE TABLE command is given below.
+   CREATE TABLE `mods` (  
+  `post_topic` varchar(25) NOT NULL,  
+  `post_content` text NOT NULL,  
+  `post_time` datetime NOT NULL,  
+  `post_by` varchar(25) NOT NULL,  
+  `Id` int(5) NOT NULL AUTO_INCREMENT,  
+  PRIMARY KEY (`Id`)  
+) 
 + The MySQL query to create a user with Admin privileges is  
 **INSERT INTO users (user_name,user_pass,user_time,user_level) VALUES ('myUser','myPassword',now(),'Admin');**
 
