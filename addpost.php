@@ -4,8 +4,6 @@
     $level = $_SESSION['level'];
     $mod = $_SESSION['mod'];
     if(!$user) {
-      //echo 'You must be logged in to continue<br><br>';
-      //echo '<button type="button" onclick="location.href=\'login.php\'">Click here to login</button>';
       header("Location: login.php");
     }
     elseif ($level == "Visitor") {

@@ -126,7 +126,6 @@
       else {
         die("Error extracting from database");
       }
-  }
 ?>
   <script type="text/javascript">
     function delPost(postId)  {
@@ -139,3 +138,6 @@
   </script>
   </body>
 </html>
+<?php
+  }
+?>
