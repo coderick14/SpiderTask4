@@ -77,7 +77,8 @@ The details about the database and the tables used are as follows :
 + Copy the public key. Open signup.php. You will see a line 
 ```html
 <div class="g-recaptcha" data-sitekey="Your-public-key"></div>
-```. Paste this public key in the 'data-sitekey' attribute,replacing "Your-public-key".
+```
+Paste this public key in the 'data-sitekey' attribute,replacing "Your-public-key".
 
 ----
 
