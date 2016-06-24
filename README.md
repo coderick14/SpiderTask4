@@ -73,7 +73,11 @@ The details about the database and the tables used are as follows :
 + In the **Register a new site** box, type in a label(say localhost) and your domain name(say localhost). 
 + Click on **Register**.
 + You will get two keys, a public key and a private key.
-+ Copy the private key. Open signup.php. Assign this value to $privatekey variable.
++ Copy the private key. Open signup.php. In the line
+```html
+$privatekey = "Your-private-key";
+```
+replace the string "Your-private-key" with your own secret/private key.
 + Copy the public key. Open signup.php. You will see a line 
 ```html
 <div class="g-recaptcha" data-sitekey="Your-public-key"></div>
