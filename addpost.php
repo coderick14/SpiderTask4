@@ -2,6 +2,7 @@
     session_start();
     $user = $_SESSION['user'];
     $level = $_SESSION['level'];
+    $mod = $_SESSION['mod'];
     if(!$user) {
       echo 'You must be logged in to continue<br><br>';
       echo '<button type="button" onclick="location.href=\'login.php\'">Click here to login</button>';
@@ -14,7 +15,12 @@
       if(isset($_POST['add']))  {
         $topic = $_POST['topic'];
         $content = $_POST['content'];
-        $addpost = $dbcon->prepare("INSERT INTO posts (post_by,post_time,post_topic,post_content) VALUES (?,now(),?,?)");
+        if ($level == "Editor" && $mod == "Yes") {
+          $addpost = $dbcon->prepare("INSERT INTO mods (post_by,post_time,post_topic,post_content) VALUES (?,now(),?,?)");
+        }
+        else {
+          $addpost = $dbcon->prepare("INSERT INTO posts (post_by,post_time,post_topic,post_content) VALUES (?,now(),?,?)");
+        }
         if($addpost)  {
           $addpost->bind_param("sss",$user,$topic,$content);
         }

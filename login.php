@@ -3,6 +3,7 @@
   include('connect.php');
   $nameErr=$passErr=$captchaErr="";
   if(isset($_POST['signin'])) {
+    //include('connect.php');
     $flag = 1;
     if(empty($_POST['uname_ex']))  {
       $nameErr = "Username cannot be blank";
@@ -15,16 +16,22 @@
     if($flag)  {
         $uName = $_POST['uname_ex'];
         $uPass = $_POST['upass_ex'];
+        //echo $uName,$uPass;
         $sqlquery = "SELECT * FROM users WHERE user_name='$uName'";
+        //echo $sqlquery;
         $result = mysqli_query($dbcon,$sqlquery);
+        //$result = $dbcon->query($sqlquery);
         if($result) {
           if(mysqli_num_rows($result)==0)
             $nameErr = "Username does not exist";
           else {
             $row = mysqli_fetch_array($result);
             if($row['user_pass'] == $uPass) {
+              //echo 'Access Granted';//store in session variables and redirect
               $_SESSION['user'] = $uName;
               $_SESSION['level'] = $row['user_level'];
+              $_SESSION['mod'] = $row['mod_status'];
+              //$_SESSION['loggedin'] = true;
               echo "<script type='text/javascript'>location.href='board.php'</script>";
             }
             else
@@ -32,6 +39,7 @@
           }
         }
         else {
+          //echo mysqli_error($dbcon);
           die("Error extracting from database");
         }
     }

@@ -4,6 +4,7 @@
     $level = $_SESSION['level'];
     if(isset($_POST['editUser'])) {
       $_SESSION['editUser'] = $_POST['editUser'];
+      $_SESSION['editUserLevel'] = $_POST['editUserLevel'];
     }
     if(!$user) {
       echo 'You must be logged in to continue<br><br>';
@@ -17,8 +18,17 @@
         if(isset($_POST['submit']) && !empty($_POST['access'])) {
           $access = $_POST['access'];
           $name = $_SESSION['editUser'];
-          if($access != $level)
-          {
+          $mod = $_POST['mod'];
+          if($mod)  {
+            $updateLevel = $dbcon->prepare("UPDATE users SET user_level=?,mod_status=? WHERE user_name=?");
+            if($updateLevel)  {
+              $updateLevel->bind_param("sss",$access,$mod,$name);
+            }
+            else {
+              die("Error preparing statement");
+            }
+          }
+          else {
             $updateLevel = $dbcon->prepare("UPDATE users SET user_level=? WHERE user_name=?");
             if($updateLevel)  {
               $updateLevel->bind_param("ss",$access,$name);
@@ -26,16 +36,17 @@
             else {
               die("Error preparing statement");
             }
+          }
             $result = $updateLevel->execute();
 
             //$result = mysqli_query($dbcon,"UPDATE users SET user_level='$access' WHERE user_name='$name'");
             if($result) {
-              echo "Access Level Modified";
+              echo "Changes Saved";
             }
             else {
               die("Error updating database");
             }
-          }
+
         }
 ?>
 
@@ -62,10 +73,19 @@
           <h3>User Name</h3>
           <input type="text" name="username" value="<?php echo $_SESSION['editUser']; ?>" size="30" readonly/>
           <h3>Access Level</h3>
-          <input type="radio" name="access" value="Visitor" checked/>Visitor<br/>
-          <input type="radio" name="access" value="Editor" />Editor<br/>
+          <input type="radio" name="access" value="Visitor" checked/>Visitor<br />
+          <input type="radio" name="access" value="Editor" />Editor<br />
           <input type="radio" name="access" value="Admin" />Admin<br/><br/>
-          <input type="submit" name="submit" value="Change Access Level"/>
+          <?php
+            if($_SESSION['editUserLevel'] == "Editor")  {
+          ?>
+            <h3>Mark as Moderated?</h3>
+            <input type="radio" name="mod" value="Yes" />Yes<br />
+            <input type="radio" name="mod" value="No" checked />No<br/><br/>
+          <?php
+            }
+          ?>
+          <input type="submit" name="submit" value="Save Changes"/>
         </form>
       </body>
     </html>
