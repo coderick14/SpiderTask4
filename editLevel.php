@@ -7,8 +7,9 @@
       $_SESSION['editUserLevel'] = $_POST['editUserLevel'];
     }
     if(!$user) {
-      echo 'You must be logged in to continue<br><br>';
-      echo '<button type="button" onclick="location.href=\'login.php\'">Click here to login</button>';
+      //echo 'You must be logged in to continue<br><br>';
+      //echo '<button type="button" onclick="location.href=\'login.php\'">Click here to login</button>';
+      header("Location: login.php");
     }
     elseif ($level != "Admin") {
       echo "You don't have the required access to this page. Sorry. :(";

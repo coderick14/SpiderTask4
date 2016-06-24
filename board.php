@@ -2,7 +2,10 @@
   session_start();
   $user = $_SESSION['user'];
   $level = $_SESSION['level'];
-  if($user) {
+  if(!$user) {
+    header("Location: login.php");
+  }
+  else {
     include('connect.php');
 ?>
   <html>
@@ -123,10 +126,6 @@
       else {
         die("Error extracting from database");
       }
-  }
-  else {
-    echo 'You must be logged in to continue<br><br>';
-    echo '<button type="button" onclick="location.href=\'login.php\'">Click here to login</button>';
   }
 ?>
   <script type="text/javascript">
