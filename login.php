@@ -3,7 +3,6 @@
   include('connect.php');
   $nameErr=$passErr=$captchaErr="";
   if(isset($_POST['signin'])) {
-    //include('connect.php');
     $flag = 1;
     if(empty($_POST['uname_ex']))  {
       $nameErr = "Username cannot be blank";
