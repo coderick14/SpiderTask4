@@ -12,8 +12,8 @@
     else {
       include('connect.php');
       if(isset($_POST['add']))  {
-        $topic = $_POST['topic'];
-        $content = $_POST['content'];
+        $topic = htmlspecialchars($_POST['topic']);
+        $content = htmlspecialchars($_POST['content']);
         if ($level == "Editor" && $mod == "Yes") {
           $addpost = $dbcon->prepare("INSERT INTO mods (post_by,post_time,post_topic,post_content) VALUES (?,now(),?,?)");
         }
