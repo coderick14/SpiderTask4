@@ -1,4 +1,4 @@
-###Spider Task 4
+### Spider Task 4
 
 This project involves making a bulletin board where users can login or signup to share their posts. Thus it consists of an authentication and authorization system. There are three access levels, namely Visitor,Editor and Admin. A newly signed up user has the access level of Visitor.  
 The access rights are as follows:  
@@ -14,12 +14,12 @@ The access rights are as follows:
 
 Below are the links for downloading all the necessary software required to run the scripts :
 
-####For Windows
+#### For Windows
 + Install Apache. [Click here](https://www.sitepoint.com/how-to-install-apache-on-windows/) to install. It contains all the links and a step by step guide about the installation.
 + Install php5. [This link](https://www.sitepoint.com/how-to-install-php-on-windows/) provides a step by step method on how to install and configure php5 on your system.
 + Install MySQL. [This link](https://www.sitepoint.com/how-to-install-mysql/) provides a step by step method for doing this
 
-####For Linux
+#### For Linux
 + Install Apache. Open your terminal. Type **sudo apt-get install apache2**. Start your server with **sudo /etc/init.d/apache2 start**.
 + Install php5. Type **sudo apt-get install php5 libapache2-mod-php5** and **sudo apt-get install php5-mysql**. Restart your server with the command **sudo /etc/init.d/apache2 restart**.
 + Install MySQL. Type **sudo apt-get install mysql-server**. 
@@ -31,38 +31,7 @@ The details about the database and the tables used are as follows :
 + Create an user with all grant privileges, say "MyUsername" or you may use any existing user with all grant privileges.
 + In case you created a new user, set up a password, say "MyPassword"
 + Create a database after logging in with the above username and password, say "MyDatabase". You may use any existing database as well(Not recommended).
-+ The first table is 'users'. The CREATE TABLE command is given below.  
-   CREATE TABLE `users` (  
-  `Id` int(4) NOT NULL AUTO_INCREMENT,  
-  `user_name` varchar(20) NOT NULL,  
-  `user_pass` varchar(50) NOT NULL,  
-  `user_time` datetime NOT NULL,  
-  `user_level` varchar(10) NOT NULL DEFAULT 'Visitor',  
-  PRIMARY KEY (`Id`),  
-  UNIQUE KEY `user_name` (`user_name`)  
-)  
-+ The second table is 'posts'. The CREATE TABLE command is given below.  
-   CREATE TABLE `posts` (  
-  `Id` int(4) NOT NULL AUTO_INCREMENT,  
-  `post_content` text NOT NULL,  
-  `post_time` datetime NOT NULL,  
-  `post_topic` varchar(200) NOT NULL,  
-  `post_by` varchar(25) NOT NULL DEFAULT 'Anonymous',  
-  PRIMARY KEY (`Id`),  
-  KEY `post_by` (`post_by`)  
-)
-+ The third table is 'mods'. The CREATE TABLE command is given below.
-   CREATE TABLE `mods` (  
-  `post_topic` varchar(25) NOT NULL,  
-  `post_content` text NOT NULL,  
-  `post_time` datetime NOT NULL,  
-  `post_by` varchar(25) NOT NULL,  
-  `Id` int(5) NOT NULL AUTO_INCREMENT,  
-  PRIMARY KEY (`Id`)  
-) 
-+ The MySQL query to create a user with Admin privileges is  
-**INSERT INTO users (user_name,user_pass,user_time,user_level) VALUES ('myUser','myPassword',now(),'Admin');**
-
++ Run `mysql -u root -p DB_NAME < db_setup.sql`
 ----
 
 **Captcha System**
